@@ -1,0 +1,28 @@
+<h1> Singup </h1>
+<%= form_with model: @user  do |f| %>
+  <div>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+</br>
+   <div>
+    <%= f.label :email %></br>
+    <%= f.text_field :email %>
+  </div>
+</br>
+
+  <div>
+    <%= f.label :password %></br>
+    <%= f.text_field :password %>
+  </div>
+</br>
+  <div>
+    <%= f.label :password_confirmation %></br>
+    <%= f.text_field :password_confirmation %>
+  </div>
+</br>
+<div>
+  <%= f.submit %>
+</div>
+ 
+<% end %>
