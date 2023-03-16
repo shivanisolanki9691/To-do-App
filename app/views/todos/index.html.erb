@@ -1,4 +1,12 @@
-<nav class="navbar" style="background-color: #e3f2fd;">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<body>
+  <nav class="navbar" style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><h1>Todo list</h1></a>
       <form class="d-flex" role="search">
@@ -8,7 +16,8 @@
       </form>
     </div>
   </div>
-</nav>
+</nav> 
+
 
 
 <div class="text-center">
@@ -16,6 +25,7 @@
     <%= form_for Todo.new do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name, placeholder: 'type working here' %>
+
       </br>
         
       <%= f.label :day %>
@@ -24,56 +34,98 @@
         <%= f.submit "enter", class: "btn btn-primary"  %>
     <% end %>
 </div>
+<table>
+  <tr>
+    <th><h3>Monday</h3></th>
+    <td>
+      <ol>
+        <% @monday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+        <% end %>
+      </ol>
+    </td>
+  </tr>
 
-<h1>Monday</h1>
-<ol>
-  <% @monday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-  </ol>
+  <tr>
+    <th><h3>Tuesday</h3></th>
+    <td>
+      <ol>
+        <% @tuesday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+          <% end %>
+      </ol>
+    </td>
+  </tr>
 
-<h1>Tuesday</h1>
-<ul>
-  <% @tuesday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-</ul>
-<h1>Wednesday</h1>
-<ul>
-  <% @wednesday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-</ul>
-<h1>Thuesday</h1>
-<ul>
-  <% @thuesday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-</ul>
-<h1>Friday</h1>
-<ul>
-  <% @friday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-</ul>
-<h1>Saturday</h1>
-<ul>
-  <% @saturday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-</ul>
-<h1>Sunday</h1>
-<ul>
-  <% @sunday_todos.each do |todo| %>
-    <li><%= todo.name %>
-    <small><%= link_to 'delete', todo, method: :delete %></small></li>
-    <% end %>
-</ul>
- 
-</div>
+
+  <tr>
+    <th><h3>Wednesday</h3></th>
+    <td>
+      <ol>
+        <% @wednesday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+        <% end %>
+      </ol>
+    </td>
+  </tr>
+
+
+  <tr>
+    <th><h3>Thuesday</h3></th>
+    <td>
+      <ol>
+        <% @thuesday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+        <% end %>
+      </ol>
+    </td>
+  </tr>
+
+
+  <tr>
+    <th><h3>Friday</h3></th>
+    <td>
+      <ol>
+        <% @friday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+        <% end %>
+      </ol>
+    </td>
+  </tr>
+
+
+  <tr>
+    <th><h3>Saturday</h3></th>
+    <td>
+      <ol>
+        <% @saturday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+        <% end %>
+      </ol>
+    </td>
+  </tr>
+
+  
+  <tr>
+    <th><h3>Sunday</h3></th>
+    <td>
+      <ol>
+        <% @sunday_todos.each do |todo| %>
+        <li><%= todo.name %>
+          <small><%= link_to 'delete', todo, method: :delete %></small></li>
+        <% end %>
+      </ol>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
+
+

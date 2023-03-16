@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
   before_action :set_user, only:[:show,:edit,:update,:destroy ]
 
   def index
     @users = User.all
+    # rendor json: @user
   end
-
   
   def show
   end
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  
+     
   def edit
   end
 
@@ -22,21 +24,26 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path, notice: "User was successfully created." 
+      # render json: @user 
+      render json: @user
+      SendMailer.send_email(user.email, user).deliver_now
+      # redirect_to users_path, notice: "User was successfully created." 
     end
   end
 
   
   def update
     if @user.update(user_params)
-      redirect_to users_path, notice: "User was successfully updated." 
+      render json: @user , status: :ok
+      # redirect_to users_path, notice: "User was successfully updated." 
     end
   end
 
 
   def destroy
     if @user.destroy
-      redirect_to users_path, notice: "User was successfully destroyed." 
+      render json: @user
+      # redirect_to users_path, notice: "User was successfully destroyed." 
     end
   end
 
