@@ -14,7 +14,7 @@ class TodosController < ApplicationController
 		todo = Todo.new(todo_params)
 		if todo.save
 			render json: @todo
-			SendMailer.send_email("shivanisolanki@navgurukul.org", todo).deliver_now
+			SendMailer.send_email(todo.email, todo).deliver_now
 		else
 			render :index
 		end
