@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       # render json: @user 
       render json: @user
-      SendMailer.send_email(user.email, user).deliver_now
+      UserMailer.signup_confirmation(user.email, user).deliver_now
       # redirect_to users_path, notice: "User was successfully created." 
     end
   end
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
       # redirect_to users_path, notice: "User was successfully destroyed." 
     end
   end
+
 
   private
   def set_user

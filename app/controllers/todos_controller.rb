@@ -31,6 +31,8 @@ class TodosController < ApplicationController
 			redirect_to todos_path, notice: "todo was successfully destroyed." 
 		end
   	end
+
+  	
 	private
 	def todo_params
 		params.require(:todo).permit(:name, :day, :email, :image)
