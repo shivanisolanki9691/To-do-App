@@ -22,8 +22,8 @@ class UsersController < ApplicationController
 
   
   def create
-    @user = User.new(user_params)
-    if @user.save
+    user = User.new(user_params)
+    if user.save
       # render json: @user 
       # render json: @user
       UserMailer.signup_confirmation(user.email, user).deliver_now
