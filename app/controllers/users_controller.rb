@@ -25,25 +25,25 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # render json: @user 
-      render json: @user
-      SendMailer.send_email(user.email, user).deliver_now
-      # redirect_to users_path, notice: "User was successfully created." 
+      # render json: @user
+      UserMailer.signup_confirmation(user.email, user).deliver_now
+      redirect_to users_path, notice: "User was successfully created." 
     end
   end
 
   
   def update
     if @user.update(user_params)
-      render json: @user , status: :ok
-      # redirect_to users_path, notice: "User was successfully updated." 
+      # render json: @user , status: :ok
+      redirect_to users_path, notice: "User was successfully updated." 
     end
   end
 
 
   def destroy
     if @user.destroy
-      render json: @user
-      # redirect_to users_path, notice: "User was successfully destroyed." 
+      # render json: @user
+      redirect_to users_path, notice: "User was successfully destroyed." 
     end
   end
 
