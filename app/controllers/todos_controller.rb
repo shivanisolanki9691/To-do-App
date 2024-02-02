@@ -27,7 +27,7 @@ class TodosController < ApplicationController
 	def destroy
 		@todo = Todo.find(params[:id])
 		if @todo.destroy
-			# render json: @todo
+
 			redirect_to todos_path, notice: "todo was successfully destroyed." 
 		end
   	end
